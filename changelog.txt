@@ -1,0 +1,115 @@
+2006-12-23
+==========
+release 0.90.20
+- change: changed the random number generator for the crypt function from DEV_RADNOM to DEV_URANDOM; gives extreme performance boost.
+
+2006-11-02
+==========
+release 0.90.10
+- bugfix: fixed a bug in the database update/create scripts. Bug causes that the config parameter "on decode check password" can't be saved.
+
+2006-10-30
+==========
+release 0.90.00
+- change: on decode the masterpassword is checked whether it is right or not
+
+2006-10-22
+==========
+release 0.89.85
+- change: the searchkeyword is now also searched in the URL field
+- change: on the account-add, edit, edit-pass and view-page the first textfield get automatically the focus
+- change: highlighting the table rows on mouseover
+- change: show accesskey help an each page
+
+2006-10-16
+==========
+release 0.89.75
+- bugfix: fixed a bug that sometimes occurs when a account is saved [clsPpmCrypt.php, pp_account_save.php]
+- change: on activated search (group and/or text), the info text "filter on" is shown in red, othwerwise in green
+- change: same changes done on the page design / color theme.
+- change: all main function now accessable with accesskeys
+
+2006-10-14
+==========
+release 0.89.55
+- change: added a function to check the communication with the crypt module [clsPpmCrypt.php]
+
+2006-10-12
+==========
+release 0.89.45
+- bugfix: fixed the bug that a account can't be saved with Internet Explorer
+
+2006-10-11
+==========
+release 0.89.35
+- change: some internal code cleanup done; changes made on the save page and the initial-vector creation for the crypt function
+- change: changed the config parameter "accounts per page" to show more values (25, 30, 50), and the possibility to show all accounts in the mainview
+
+2006-10-09
+==========
+release 0.89.15
+- bugfix: fixed the bug that the url field not shown in mainview; bug first appeared in version 0.89.10 [index.php]
+
+2006-10-09
+==========
+release 0.89.10
+- bugfix: bugs in the page handling fixed. Mainly variable transfer between the pages to keep the filter settings when returning to mainpage.
+- change: some internal code cleanup done (variable-processing, -names, handling and transfer)
+
+2006-10-08
+==========
+release 0.89.00
+- new:    divided the mainview into pages. How many accounts shown per page can be configured over a config value. [index.php, ppm_config.php]
+
+2006-10-06
+==========
+release 0.88.20
+- bugfix: another bug in the table create statements fixed. Now also will with MySQL 3.x.
+
+2006-10-05
+==========
+release 0.88.10
+- bugfix: a bug in the tables create statements fixed. They now also will work with MySQL 4.x and not only with MySQL 5.x.
+
+2006-10-04
+==========
+release 0.88.00
+- change: some pagedesign changes done on the config- and mainpage [index.php, ppm_config.php]
+- new:    added the possibility to sort the accounts (ascending/descending) by name, group, login or url [index.php]
+
+2006-09-30
+==========
+release 0.87.00
+- new:    config parameter to use the accountname as link to the account view page [index.php, ppm_config]
+- new:    added the field "URL" to the account 
+- change: adjusted the input textfields to larger size (add and edit) [ppm_account_edit.php, ppm_account_edit_pass]]
+- change: changed the table with an the startpage [index.php]
+- new:    added a date field to show the create date of the account [ppm_account_view.php]
+- new:    added a date field to show the modify date of the account [ppm_account_view.php]
+- new:    added a counter to show how often the account has been viewed [ppm_account_view.php]
+- new:    added a counter to show how often the account has been decrypted [ppm_account_view.php]
+- change: moved the account management function to a class [clsPpmAccount.php]
+- change: files "install/tables.sql" updated
+
+2006-09-29
+==========
+release 0.82.00
+- new:    config parameter "show encrypted password" added
+- change: function "random pass" provided with a popup the this function will be implemented later [ppm_account_add.php]
+
+2006-09-25
+==========
+release 0.81.10
+- change: updated readme.txt to explain how to use the javascript function "copy to clipboard" with firefox/mozilla browers
+
+2006-09-24
+==========
+release 0.81.00
+- change: completly rewriten the save function [ppm_account_save.php]
+- change: moved the crypt-functions to a own class [clsPpmCrypt]
+- bugfix: sometimes the create/edit-pass functions causes a database error [ppm_account_save.php]
+
+2006-09-22
+==========
+release 0.80.10
+- first release of phpPassManager
