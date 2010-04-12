@@ -1,0 +1,51 @@
+README
+======
+
+IMPORTANT:
+==========
+In the accountview you have the possibility to copy the decrytped password to your clipboard.
+If you use the firefox/mozilla browser you have to change your firefox security settings to use this feature.
+Therefor add the fallowing line to your firefox/mozilla configfile (prefs.js). This file is located under your firefox user profile directory.
+	user_pref("signed.applets.codebase_principal_support", true);
+Another way is to change this setting directly over your browser interface.
+Therefor call the URL "about:config", press the right button and insert a new boolean value
+with name "signed.applets.codebase_principal_support" and the value "true".
+
+It also make sense to protect the the phpPassManager pages with "htaccess" and use SSL to access the pages!
+
+
+
+Requirements:
+=============
+- Apache
+- PHP
+- MySQL
+- PHP mcrypt module
+
+
+
+Install:
+========
+
+1: extract package
+Extract the file phppassmanager-x.yy.zz.tgz in your webserver root directory.
+On your shell you can do this with: tar -xfvz phppassmanager-x.yy.zz.tgz
+
+2: create database
+Create a MySQL database or use a already existing one.
+For example on your shell you can create a databse this with command: echo "create database phppassmanager" | mysql -u username --password=password
+
+3: create tables
+Use the file "install/tables.sql" to create the tables.
+You can do this for example with phpMyAdmin or on your shell: mysql -u username --password=password phppassmanager < tables.sql
+
+4: create a db user
+create a db user or use a existing one
+
+5: edit config.php
+Edit the file "config.php"
+Fill in there your dbusername, dbpassword an the database you want to use
+
+6: ready
+Call the website with http://www.your.address/phppassmanager/
+
