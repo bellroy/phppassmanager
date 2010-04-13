@@ -1,7 +1,7 @@
 <?php
 
-        require_once("config.php");
         require_once("constants.inc");
+        require_once(CONFIG_FILE);
         require_once("classes/clsPpmConfig.php");
         require_once("classes/clsPpmVersion.php");
         require_once("functions/db.php");

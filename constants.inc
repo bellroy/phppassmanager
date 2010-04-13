@@ -8,8 +8,9 @@ define("PROJECT_AUTHOR_EMAIL","hollow_@users.sourceforge.net");
 define("PROJECT_HP_SF","http://sourceforge.net/projects/phppassmanager");
 
 $domain_parts = split('\.', $_SERVER['SERVER_NAME']);
-$title = ucwords($domain_parts[0]);
+$site_name = ucwords($domain_parts[0]);
 
-define("HTML_HEADER", "$title Passwords");
-define("HTML_TITLE","$title Passwords");
+define("HTML_HEADER", "$site_name Passwords");
+define("HTML_TITLE","$site_name Passwords");
+define("CONFIG_FILE", "config-" . strtolower($site_name) . ".php"); 
 ?>

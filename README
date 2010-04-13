@@ -42,10 +42,11 @@ You can do this for example with phpMyAdmin or on your shell: mysql -u username 
 4: create a db user
 create a db user or use a existing one
 
-5: edit config.php
-Edit the file "config.php"
+5: edit config-<sitename>.php
+<sitename> == to the first section of the vhosts fqdn.
+Edit the file "config-<sitename>.php"
 Fill in there your dbusername, dbpassword an the database you want to use
 
 6: ready
-Call the website with http://www.your.address/phppassmanager/
+Call the website with http://<sitename>.<domainname>
 

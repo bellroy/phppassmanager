@@ -1,7 +1,7 @@
 <?php
 
-        require_once("config.php");
         require_once("constants.inc");
+        require_once(CONFIG_FILE);
         require_once("functions/db.php");
         require_once("functions/pagedesign.php");
 
