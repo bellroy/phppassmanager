@@ -1,8 +1,0 @@
-<?php
-
-$DBHost = "localhost";
-$DbUser = "phppassmanager";
-$DbPass = "phppassmanager";
-$DbName= "phppassmanager";
-
-?>
