@@ -9,11 +9,15 @@ define("PROJECT_HP_SF","http://sourceforge.net/projects/phppassmanager");
 define("PROJECT_HP_GH","http://github.com/tricycle/phppassmanager");
 
 $domain_parts = split('\.', $_SERVER['SERVER_NAME']);
-$site_name = ucwords($domain_parts[0]);
 
-define("HTML_HEADER", "$site_name Passwords");
-define("HTML_TITLE","$site_name Passwords");
-define("CONFIG_FILE", "config-" . strtolower($site_name) . ".php"); 
+define("SITE_NAME", $domain_parts[0]);
+
+define("HTML_HEADER", ucwords(SITE_NAME) . " Passwords");
+define("HTML_TITLE", ucwords(SITE_NAME) . " Passwords");
+define("CONFIG_FILE", "config-" . strtolower(SITE_NAME) . ".php"); 
 define("COMMON_MASTER_PASS", TRUE); 
 define("MASTER_PASS", ' ');
+
+
+include $_SERVER['DOCUMENT_ROOT']."/ppm_auth.php"; 
 ?>
