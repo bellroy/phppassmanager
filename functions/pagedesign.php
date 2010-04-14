@@ -13,7 +13,7 @@ function PrintFooter() {
 	echo ("<DIV ALIGN=\"center\">");
 	echo ("<B>" . PROJECT_NAME . "</B>, Version " . PROJECT_VERSION . "<BR>");
 	echo ("Copyright " . PROJECT_COPYRIGHT . " by " . PROJECT_AUTHOR . "<BR>");
-	echo ("<A HREF=\"mailto:" . PROJECT_AUTHOR_EMAIL . "\">eMail</A>,  <A HREF=\"" . PROJECT_HP_SF . "\">SourceForge</A>");
+	echo ("<A HREF=\"" . PROJECT_HP_GH . "\">GitHub</A>");
 	echo ("</DIV>");
 }
 

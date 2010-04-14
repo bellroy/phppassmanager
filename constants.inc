@@ -1,11 +1,12 @@
 <?php
 
-define("PROJECT_VERSION","0.90.20");
+define("PROJECT_VERSION","0.91.0");
 define("PROJECT_NAME","phpPasswordManager");
-define("PROJECT_COPYRIGHT","© 2006");
-define("PROJECT_AUTHOR","hollow");
+define("PROJECT_COPYRIGHT","© 2010");
+define("PROJECT_AUTHOR","hollow, Jon Higgs");
 define("PROJECT_AUTHOR_EMAIL","hollow_@users.sourceforge.net");
 define("PROJECT_HP_SF","http://sourceforge.net/projects/phppassmanager");
+define("PROJECT_HP_GH","http://github.com/tricycle/phppassmanager");
 
 $domain_parts = split('\.', $_SERVER['SERVER_NAME']);
 $site_name = ucwords($domain_parts[0]);
