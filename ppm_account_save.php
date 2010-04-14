@@ -26,6 +26,13 @@
 	$password2 = $_POST["password2"];
 	$masterpassword = $_POST["masterpassword"];
 	$masterpassword2 = $_POST["masterpassword2"];
+
+  if (COMMON_MASTER_PASS) {
+    $masterpassword = MASTER_PASS; 
+    $masterpassword2 = MASTER_PASS; 
+  }
+
+
 	$notice = $_POST["notice"];
 	$savetyp = $_POST["savetyp"];
 	$ssearch = $_POST["ssearch"];
@@ -88,17 +95,17 @@
 	
 	if ( $savetyp == 4 ) {
 		$strHeader = "change account password";
-	        if ( $password != $password2 ) {
+	  if ( $password != $password2 ) {
 			$strOutputText = "the passwords doesn't match";
 			$blnError = TRUE;
-	        } elseif ( $masterpassword == "" ) {	
+	  } elseif ( $masterpassword == "" ) {	
 			$strOutputText = "you have to use a masterpassword";
 			$blnError = TRUE;
-	        } elseif ( $masterpassword != $masterpassword2 ) {
+	  } elseif ( $masterpassword != $masterpassword2 ) {
 			$strOutputText = "the masterpasswords doesn't match";
 			$blnError = TRUE;
-	        }
-        	$changepass = 1;
+	  }
+    $changepass = 1;
 	}
 
 ?>

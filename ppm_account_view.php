@@ -69,7 +69,7 @@
 	}
 
 	if ( $intDecode == 1 ) {
-		if ( $strMasterpass == "") {
+		if ( $strMasterpass == "" && COMMON_MASTER_PASS == false) {
 
 ?>
 
@@ -247,8 +247,10 @@
 				<INPUT TYPE="hidden" NAME="search" VALUE="<?php echo ($strSearch) ?>">
 				<INPUT TYPE="hidden" NAME="page" VALUE="<?php echo ($intPage) ?>">
 				<INPUT TYPE="submit" VALUE="decode" CLASS="altButtonFormat" ACCESSKEY="d">
-				Masterpassword:
+				<?php if (COMMON_MASTER_PASS == false) { ?>
+        Masterpassword:
 				<INPUT TYPE="password" NAME="masterpass">
+        <?php } ?>
 			</FORM>
 		</TD>
 

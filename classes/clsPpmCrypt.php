@@ -26,6 +26,7 @@ class clsPpmCrypt {
 	}
 
 	function encrypt ($strValue, $strPassword, $strInitialVector) {
+                if (COMMON_MASTER_PASS) $strPassword = MASTER_PASS; 
 
                 $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
                 mcrypt_generic_init($resEncDes, $strPassword, $strInitialVector);
@@ -37,6 +38,7 @@ class clsPpmCrypt {
 	}
 
 	function decrypt($strEncrypted, $strPassword, $strInitialVector) {
+                if (COMMON_MASTER_PASS) $strPassword = MASTER_PASS; 
 
                 $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
                 mcrypt_generic_init($resEncDes, $strPassword, $strInitialVector);

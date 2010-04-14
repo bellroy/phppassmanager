@@ -13,4 +13,6 @@ $site_name = ucwords($domain_parts[0]);
 define("HTML_HEADER", "$site_name Passwords");
 define("HTML_TITLE","$site_name Passwords");
 define("CONFIG_FILE", "config-" . strtolower($site_name) . ".php"); 
+define("COMMON_MASTER_PASS", FALSE); 
+define("MASTER_PASS", ' ');
 ?>

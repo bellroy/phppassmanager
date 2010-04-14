@@ -75,6 +75,7 @@
 			<INPUT TYPE="password" SIZE="100" NAME="password2">
 		</TD>
 	</TR>
+  <?php if (COMMON_MASTER_PASS == false) { ?>
 	<TR CLASS="odd">
 		<TD width="25%" ALIGN="right">Masterpassword:</TD>
 		<TD>
@@ -87,6 +88,7 @@
 			<INPUT TYPE="password" SIZE="100" NAME="masterpassword2">
 		</TD>
 	</TR>
+  <?php } ?>
 </TABLE>
 
 <BR><BR>
