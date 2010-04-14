@@ -1,7 +1,6 @@
 <?php
 
 $AuthUserFile = file($_SERVER['DOCUMENT_ROOT'].'/htpasswd-'. SITE_NAME);
-$group = "Members";
 $realm = "Members";
 
 function authenticate(){
