@@ -9,12 +9,30 @@ function PrintHeader() {
 
 function PrintFooter() {
 
+
 	echo ("<BR><BR>");
 	echo ("<DIV ALIGN=\"center\">");
+  echo ("<B>Users: </B>" . Users() . "<BR><BR>");
 	echo ("<B>" . PROJECT_NAME . "</B>, Version " . PROJECT_VERSION . "<BR>");
 	echo ("Copyright " . PROJECT_COPYRIGHT . " by " . PROJECT_AUTHOR . "<BR>");
 	echo ("<A HREF=\"" . PROJECT_HP_GH . "\">GitHub</A>");
 	echo ("</DIV>");
+}
+
+function Users() {
+  $htpasswd = $_SERVER['DOCUMENT_ROOT'] . "/htpasswd-" . SITE_NAME;
+  $fh = fopen($htpasswd, 'r') or die("Can't open file");
+
+  $lines = file($htpasswd);
+
+  foreach ($lines as $line){
+    #array_push($users, split($line)[0]);
+    $data = split(':', $line);
+    $users = $data[0]." ";
+  }
+
+  fclose($fh);
+  return $users;
 }
 
 function StartRenderTimer() {
