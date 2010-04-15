@@ -1,0 +1,9 @@
+<Files .htaccess>
+order deny,allow
+deny from all
+</Files> 
+
+<Files htpasswd*>
+order deny,allow
+deny from all
+</Files> 
