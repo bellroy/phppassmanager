@@ -21,7 +21,6 @@ function PrintFooter() {
 
 function Users() {
   $htpasswd = $_SERVER['DOCUMENT_ROOT'] . "/htpasswd-" . SITE_NAME;
-  $fh = fopen($htpasswd, 'r') or die("Can't open file");
 
   $lines = file($htpasswd);
 
@@ -31,7 +30,6 @@ function Users() {
     $users = $data[0]." ";
   }
 
-  fclose($fh);
   return $users;
 }
 
