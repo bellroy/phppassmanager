@@ -10,18 +10,19 @@ function authenticate(){
     exit;
 }
 
+
 for(; 1; authenticate()){
-    if (!isset($HTTP_SERVER_VARS['PHP_AUTH_USER']))
+    if (!isset($_SERVER['PHP_AUTH_USER']))
         continue;
 
-    $user = $HTTP_SERVER_VARS['PHP_AUTH_USER'];
+    $user = $_SERVER['PHP_AUTH_USER'];
     if(!($authUserLine = array_shift(preg_grep("/$user:.*$/", $AuthUserFile))))
         continue;
 
     preg_match("/$user:((..).*)$/", $authUserLine, $matches);
     $authPW = $matches[1];
     $salt = $matches[2];
-    $submittedPW = crypt($HTTP_SERVER_VARS['PHP_AUTH_PW'], $salt);
+    $submittedPW = crypt($_SERVER['PHP_AUTH_PW'], $salt);
     if($submittedPW != $authPW)
         continue;
 
