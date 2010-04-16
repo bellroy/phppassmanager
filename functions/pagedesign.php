@@ -27,7 +27,7 @@ function Users() {
   foreach ($lines as $line){
     #array_push($users, split($line)[0]);
     $data = split(':', $line);
-    $users = $data[0]." ";
+    $users .= $data[0]." ";
   }
 
   return $users;
