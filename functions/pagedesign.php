@@ -27,9 +27,13 @@ function Users() {
   foreach ($lines as $line){
     #array_push($users, split($line)[0]);
     $data = split(':', $line);
-    $users .= $data[0]." ";
+    $users .= $data[0]."";
+    if ($data[0] == $_SERVER['PHP_AUTH_USER']) {
+      $users .= " [<a href='/ppm_password_change.php'>change pass</a>]";
+    }
+    $users .= ", ";
   }
-
+  $users = preg_replace("/, $/", '', $users);
   return $users;
 }
 

@@ -11,6 +11,7 @@ define("PROJECT_HP_GH","http://github.com/tricycle/phppassmanager");
 $domain_parts = split('\.', $_SERVER['SERVER_NAME']);
 
 define("SITE_NAME", $domain_parts[0]);
+define("SITE_ADMIN", "Jon");
 
 define("HTML_HEADER", ucwords(SITE_NAME) . " Passwords");
 define("HTML_TITLE", ucwords(SITE_NAME) . " Passwords");
