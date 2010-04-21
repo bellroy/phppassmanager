@@ -234,8 +234,8 @@
 
 ?>	
 
-	<TR CLASS="<?php echo ($strTableClass) ?>">
-		<TD>
+    <TR CLASS="accountrow <?php echo ($strTableClass) ?>">
+		<TD CLASS="accountname">
 
 <?php
 
@@ -249,11 +249,11 @@
 
  ?>
 		</TD>
-		<TD><?php echo ($arrRow["vacGroupName"]) ?></TD>
-		<TD><?php echo ($arrRow["vacLogin"]) ?></TD>
-		<TD><?php echo ("<A HREF=\"" . $arrRow["vacUrl"] . "\" target=\"_blank\">" . $arrRow["vacUrl"]) ?></TD>
-		<TD><?php echo ($strNotice) ?></TD>
-		<TD ALIGN="center">
+		<TD CLASS="accountgroup"><?php echo ($arrRow["vacGroupName"]) ?></TD>
+		<TD CLASS="accountlogin"><?php echo ($arrRow["vacLogin"]) ?></TD>
+		<TD CLASS="accounturl"><?php echo ("<A HREF=\"" . $arrRow["vacUrl"] . "\" target=\"_blank\">" . $arrRow["vacUrl"]) ?></TD>
+		<TD CLASS="accountnotice"><?php echo ($strNotice) ?></TD>
+		<TD CLASS="accontcommands" ALIGN="center">
 			<TABLE CLASS="altTable">
 				<TR>
 					<TD>
