@@ -8,7 +8,7 @@ define("PROJECT_AUTHOR_EMAIL","hollow_@users.sourceforge.net");
 define("PROJECT_HP_SF","http://sourceforge.net/projects/phppassmanager");
 define("PROJECT_HP_GH","http://github.com/tricycle/phppassmanager");
 
-$domain_parts = split('\.', $_SERVER['SERVER_NAME']);
+$domain_parts = preg_split("/\./", $_SERVER['SERVER_NAME']);
 
 define("SITE_NAME", $domain_parts[0]);
 define("SITE_ADMIN", "Jon");
