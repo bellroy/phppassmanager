@@ -36,7 +36,7 @@ class clsAccount {
 		$this->strPassword = $arrRow["vacPassword"];
 		$this->strMd5Password = $arrRow["vacMd5Password"];
 		$this->strInitialVector = $arrRow["vacInitialValue"];
-		$this->strNotice = $arrRow["txtNotice"];
+		$this->strNotice = '<pre>' . $arrRow["txtNotice"] . '</pre>';
 		$this->intCountView = $arrRow["intCountView"];
 		$this->intCountDecrypt = $arrRow["intCountDecrypt"];
 		$this->strDatAdded = $arrRow["datAdded"];
