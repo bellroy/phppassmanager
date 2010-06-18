@@ -176,7 +176,7 @@
 	</TR>
 	<TR CLASS="even">
 		<TD WIDTH="25%" ALIGN="right">Notice:</TD>
-		<TD><?php echo ($clsAccount->strNotice) ?></TD>
+		<TD><pre><?php echo ($clsAccount->strNotice) ?></pre></TD>
 	</TR>
         <TR CLASS="odd">
                 <TD WIDTH="25%" ALIGN="right">views:</TD>
