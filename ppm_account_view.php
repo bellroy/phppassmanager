@@ -1,20 +1,20 @@
 <?php
 
-        require_once("constants.inc");
-        require_once(CONFIG_FILE);
-        require_once("functions/db.php");
-        require_once("functions/pagedesign.php");
-        require_once("classes/clsPpmCrypt.php");
-        require_once("classes/clsPpmConfig.php");
-        require_once("classes/clsPpmAccount.php");
+  require_once("constants.inc");
+  require_once(CONFIG_FILE);
+  require_once("functions/db.php");
+  require_once("functions/pagedesign.php");
+  require_once("classes/clsPpmCrypt.php");
+  require_once("classes/clsPpmConfig.php");
+  require_once("classes/clsPpmAccount.php");
 
-        StartRenderTimer();
+  StartRenderTimer();
 
 	$clsAccount = new clsAccount;
 	$objCrypt = new clsPpmCrypt;
 
-        // database connect
-        $dbh = OpenDatabase($DBHost, $DbUser, $DbPass, $DbName);
+  // database connect
+  $dbh = OpenDatabase($DBHost, $DbUser, $DbPass, $DbName);
 
 	// get vars
 	$intAccountId = $_POST["accountid"];
@@ -47,8 +47,8 @@
 <HTML>
 <HEAD>
 	<TITLE><?php echo (HTML_TITLE) ?></TITLE>
-        <LINK REL="stylesheet" HREF="styles.css" TYPE="text/css">
-	<SCRIPT SRC="javascript/clipboard.js" LANGUAGE="javascript" TYPE="text/javascript"></SCRIPT>
+  <LINK REL="stylesheet" HREF="styles.css" TYPE="text/css">
+  <SCRIPT TYPE="text/javascript" SRC="javascript/zeroclipboard/ZeroClipboard.js"></SCRIPT>
 </HEAD>
 <BODY ONLOAD="javascript:document.showaccount.masterpass.focus()">
 
@@ -122,55 +122,64 @@
 
 		$blnNoMd5 = FALSE;
 		if ( $clsConfig->getConfigValue("md5_pass") == "TRUE" ) {
+
 			if ($clsAccount->strMd5Password != "0") {
+
 				if (md5($strDecrypted) == $clsAccount->strMd5Password) {	
 					$blnDecryptCheck = TRUE;
+
 					if ( $clsConfig->getConfigValue("password_show") == "FALSE" ) {
 						$strPasswordOutput = "password not shown - can only copy to clipboard";
-					} else {
+					} 
+
+          else {
 			 			$strPasswordOutput = $strDecrypted;
 					}
-				} else {
+
+				}
+        else {
 					$strPasswordOutput = "<B CLASS=\"altTextRed\">Wrong Masterpassword!</B>";
 					$blnDecryptCheck = FALSE;
 				}
-			} else {
+
+			}
+      else {
 				$blnDecryptCheck = TRUE;
 				$blnNoMd5 = TRUE;
-				$strPasswordOutput = $strDecrypted . " <B CLASS=\"altTextRed\">**</B>";
+				$strPasswordOutput = htmlspecialchars($strDecrypted) . "<B CLASS=\"altTextRed\">**</B>";
 			}
-		} else {
+		} 
+    else {
+
 			if ( $clsConfig->getConfigValue("password_show") == "FALSE" ) {
 				$blnDecryptCheck = TRUE;
 				$strPasswordOutput = "password not shown - can only copy to clipboard";
-			} else {
+			} 
+
+      else {
 				$blnDecryptCheck = TRUE;
-				$strPasswordOutput = $strDecrypted;
+				$strPasswordOutput = htmlspecialchars($strDecrypted);
 			}
 		}
 
-		echo ($strPasswordOutput);
+		echo '<input type=text value="' . $strPasswordOutput . '" readonly=true></input>';
 
-	 } else {
+	 } 
+   else {
 		 echo ("not available - decrypted");} ?>
 
 			<FORM ACTION="">
-<?php
 
-	if ( $intDecode == 1 AND $blnDecryptCheck == TRUE ) {
+<?php if ( $intDecode == 1 AND $blnDecryptCheck == TRUE ) { ?>
+			</TD>
 
-?>
+      <?php
+        // in here would go the button to copy password to clipboard
+      ?>
 
-			</TD><TD ALIGN="right">
-				<INPUT TYPE="button" NAME="clipboard" VALUE="copy to Clipboard" CLASS="altButtonFormat" ONCLICK="copy_clip('<?php echo ($strDecrypted) ?>')">
+<?php } ?>
 
-<?php
-
-	}
-
-?>
-
-			</TD></TR></TABLE>
+			</TR></TABLE>
 			</FORM>
 		</TD>
 	</TR>

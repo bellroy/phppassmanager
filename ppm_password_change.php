@@ -17,8 +17,8 @@
 <HTML>
 <HEAD>
 	<TITLE><?php echo (HTML_TITLE) ?></TITLE>
-        <LINK REL="stylesheet" HREF="styles.css" TYPE="text/css">
-	<SCRIPT SRC="javascript/clipboard.js" LANGUAGE="javascript" TYPE="text/javascript"></SCRIPT>
+  <LINK REL="stylesheet" HREF="styles.css" TYPE="text/css">
+  <SCRIPT TYPE="text/javascript" SRC="javascript/zeroclipboard/ZeroClipboard.js"></SCRIPT>
 </HEAD>
 <BODY ONLOAD="javascript:document.showaccount.masterpass.focus()">
 

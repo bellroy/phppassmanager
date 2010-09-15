@@ -40,9 +40,9 @@ class clsPpmCrypt {
     $strDecrypted = mdecrypt_generic($resEncDes, $strEncrypted);
     mcrypt_generic_deinit($resEncDes);
     mcrypt_module_close($resEncDes);
-    $strDecrypted = stripslashes(trim($strDecrypted));
+    $strDecrypted = trim($strDecrypted);
 
-    return $strDecrypted;
+    return stripslashes($strDecrypted);
   }
 
   function checkCryptModule () {
