@@ -2,7 +2,6 @@
 
 class clsPpmCrypt {
 
-
   function createIV() {
     $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
     $strInitialVector = mcrypt_create_iv(mcrypt_enc_get_iv_size($resEncDes), MCRYPT_DEV_URANDOM);
@@ -41,7 +40,7 @@ class clsPpmCrypt {
     $strDecrypted = mdecrypt_generic($resEncDes, $strEncrypted);
     mcrypt_generic_deinit($resEncDes);
     mcrypt_module_close($resEncDes);
-    $strDecrypted = trim($strDecrypted);
+    $strDecrypted = stripslashes(trim($strDecrypted));
 
     return $strDecrypted;
   }
