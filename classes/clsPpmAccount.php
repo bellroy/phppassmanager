@@ -19,6 +19,20 @@ class clsAccount {
 	var $strDatAdded;
 	var $strDatChanged;
 
+  function guessUrlProtocol($url) {
+    if (preg_match('/^.+:\/\//', $url)) {
+      $new_url = $url;
+    }
+    elseif ( $url == '' ) {
+      $new_url = '';
+    }
+    else {
+      $new_url = 'http://' . $url; 
+    }
+
+    return $new_url;
+  }
+
 	function getAccount ($intAccountId) {
 
 		$strQuery = "SELECT intAccountId, vacName, intGroupFid, vacGroupName, vacLogin, vacUrl, vacPassword, ";
@@ -32,7 +46,6 @@ class clsAccount {
 		$this->intGroupId = $arrRow["intGroupFid"];
 		$this->strGroupName = $arrRow["vacGroupName"];
 		$this->strLogin = $arrRow["vacLogin"];
-		$this->strUrl = $arrRow["vacUrl"];
 		$this->strPassword = $arrRow["vacPassword"];
 		$this->strMd5Password = $arrRow["vacMd5Password"];
 		$this->strInitialVector = $arrRow["vacInitialValue"];
@@ -41,6 +54,8 @@ class clsAccount {
 		$this->intCountDecrypt = $arrRow["intCountDecrypt"];
 		$this->strDatAdded = $arrRow["datAdded"];
 		$this->strDatChanged = $arrRow["datChanged"];
+
+    $this->strUrl = $this->guessUrlProtocol($arrRow["vacUrl"]);
 
 		mysql_free_result($resResult);
 

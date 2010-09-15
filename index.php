@@ -242,16 +242,19 @@
 	if ( $blnAccountLink == "TRUE" ) {
 		$intAccountId = $arrRow["intAccountId"];
 		$strName = $arrRow["vacName"];
+		$strUrl = $clsAccount->guessUrlProtocol($arrRow["vacUrl"]);
+
 		echo ("<A HREF=\"ppm_account_view.php?id=$intAccountId\">$strName</A>");
 	} else {
 		echo ($arrRow["vacName"]);
 	}
 
  ?>
+
 		</TD>
 		<TD CLASS="accountgroup"><?php echo ($arrRow["vacGroupName"]) ?></TD>
 		<TD CLASS="accountlogin"><?php echo ($arrRow["vacLogin"]) ?></TD>
-		<TD CLASS="accounturl"><?php echo ("<A HREF=\"" . $arrRow["vacUrl"] . "\" target=\"_blank\">" . $arrRow["vacUrl"]) ?></TD>
+		<TD CLASS="accounturl"><?php echo ("<A HREF=\"" . $strUrl . "\" target=\"_blank\">" . $strUrl) ?></TD>
 		<TD CLASS="accountnotice"><?php echo ($strNotice) ?></TD>
 		<TD CLASS="accontcommands" ALIGN="center">
 			<TABLE CLASS="altTable">
