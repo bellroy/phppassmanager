@@ -3,77 +3,69 @@
 class clsPpmCrypt {
 
 
-	function createIV() {
+  function createIV() {
+    $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
+    $strInitialVector = mcrypt_create_iv(mcrypt_enc_get_iv_size($resEncDes), MCRYPT_DEV_URANDOM);
+    mcrypt_module_close($resEncDes);
 
-                $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
-                $strInitialVector = mcrypt_create_iv(mcrypt_enc_get_iv_size($resEncDes), MCRYPT_DEV_URANDOM);
-                mcrypt_module_close($resEncDes);
+    return $strInitialVector;
+  }
 
-		return $strInitialVector;
+  function CheckIV ($strInitialVector) {
+    $strEscapeInitialVector = mysql_real_escape_string($strInitialVector);
 
-	}
+    if (strlen($strEscapeInitialVector) != 32 ) {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  }
 
-	function CheckIV ($strInitialVector) {
+  function encrypt ($strValue, $strPassword, $strInitialVector) {
+    if (COMMON_MASTER_PASS) $strPassword = MASTER_PASS; 
 
-		$strEscapeInitialVector = mysql_real_escape_string($strInitialVector);
+    $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
+    mcrypt_generic_init($resEncDes, $strPassword, $strInitialVector);
+    $strEncrypted = mcrypt_generic($resEncDes, $strValue);
+    mcrypt_generic_deinit($resEncDes);
 
-		if (strlen($strEscapeInitialVector) != 32 ) {
-			return FALSE;
-		} else {
-			return TRUE;
-		}
+    return $strEncrypted;
 
-	}
+  }
 
-	function encrypt ($strValue, $strPassword, $strInitialVector) {
-                if (COMMON_MASTER_PASS) $strPassword = MASTER_PASS; 
+  function decrypt($strEncrypted, $strPassword, $strInitialVector) {
+    if (COMMON_MASTER_PASS) $strPassword = MASTER_PASS; 
 
-                $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
-                mcrypt_generic_init($resEncDes, $strPassword, $strInitialVector);
-                $strEncrypted = mcrypt_generic($resEncDes, $strValue);
-                mcrypt_generic_deinit($resEncDes);
+    $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
+    mcrypt_generic_init($resEncDes, $strPassword, $strInitialVector);
+    $strDecrypted = mdecrypt_generic($resEncDes, $strEncrypted);
+    mcrypt_generic_deinit($resEncDes);
+    mcrypt_module_close($resEncDes);
+    $strDecrypted = trim($strDecrypted);
 
-		return $strEncrypted;
+    return $strDecrypted;
+  }
 
-	}
+  function checkCryptModule () {
+    $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
 
-	function decrypt($strEncrypted, $strPassword, $strInitialVector) {
-                if (COMMON_MASTER_PASS) $strPassword = MASTER_PASS; 
+    if ($resEncDes == FALSE )  {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
+  }
 
-                $resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
-                mcrypt_generic_init($resEncDes, $strPassword, $strInitialVector);
-                $strDecrypted = mdecrypt_generic($resEncDes, $strEncrypted);
-                mcrypt_generic_deinit($resEncDes);
-                mcrypt_module_close($resEncDes);
-                $strDecrypted = trim($strDecrypted);
+  function checkEncryptedPass ($strEncryptedPass) {
+    $strEscapedEncryptedPass = mysql_real_escape_string($strEncryptedPass);
 
-		return $strDecrypted;
+    if (strlen($strEscapedEncryptedPass) != strlen($strEncryptedPass) ) {
+      return FALSE;
+    } else {
+      return TRUE;
+    }
 
-	}
-
-	function checkCryptModule () {
-
-		$resEncDes = mcrypt_module_open('rijndael-256', '', 'cbc', '');
-
-		if ($resEncDes == FALSE )  {
-			return FALSE;
-		} else {
-			return TRUE;
-		}
-
-	}
-
-        function checkEncryptedPass ($strEncryptedPass) {
-
-                $strEscapedEncryptedPass = mysql_real_escape_string($strEncryptedPass);
-
-                if (strlen($strEscapedEncryptedPass) != strlen($strEncryptedPass) ) {
-                        return FALSE;
-                } else {
-                        return TRUE;
-                }
-
-        }
+  }
 
 }
 
